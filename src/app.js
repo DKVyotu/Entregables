@@ -1,8 +1,8 @@
 // Importa objetos Html
-import htmlElements from "./elements/html.elements";
+import htmlElements from "./elements/html.elements.js";
 
 // Importa funciones de otro JS
-import funcionesManager from "./managers/agregarproducto.manager";  
+import funcionesManager from "./managers/agregarproducto.manager.js";  
 
 // Exporta solo una funcion
 
