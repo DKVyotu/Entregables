@@ -1,0 +1,126 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(226, 226, 226);
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+ul {
+    list-style-type: none;
+}
+footer {
+    background-color: black;
+}
+header {
+    background-color: black;
+}
+.none {
+    display: none;
+}
+.tx-blanco {
+    color: white;
+}
+.tx-plomo {
+    color: rgb(170, 170, 170);
+}
+
+.tx-12 {
+    font-size: 12px;
+}
+.tx-16 {
+    font-size: 16px;
+}
+.tx-18 {
+    font-size: 18px;
+}
+.tx-mediun {
+    font-weight: 500;
+}
+.tx-semibold {
+    font-weight: 600;
+}
+.tx-bold {
+    font-weight: 700;
+}
+.tx-ultrabold {
+    font-weight: 800;
+}
+.wid250 {
+    width: 700px;
+}
+.wid100 {
+    width: 100px;
+}
+.wid60 {
+    width: 60px;
+}
+.imagenNav {
+    width: 60px;
+}
+.imagenFoot {
+    width: 80px;
+}
+.imgZoom:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+.imgZoom:not(:hover) {
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+.imgcard {
+    width: 200px;
+    height: 200px;
+}
+
+
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    width: 244px;
+    height: 406px;
+    padding: 16px;
+    margin: 8px;
+}
+
+.icon24 {
+    font-size: 24px;
+}
+.iconoCart {
+    color: rgb(95, 95, 95); 
+    font-size: 20px;
+}
+.iconoCart:hover {
+    color: rgb(202, 202, 202); 
+    transition: 0.5s;
+}
+.iconoCart:active {
+    scale: 0.8;
+    transition: 0.5s;
+}
+
+
+/* Boton Add cart */
+
+.CartBtn {
+    height: 44px;
+    overflow: hidden;
+    position: relative;
+}
+.CartBtn:hover .IconContainer {
+    transform: translateX(65px);
+    transition-duration: .5s;
+}
+.CartBtn:active {
+    transform: scale(0.95);
+    transition-duration: .5s;
+}
+
+.IconContainer {
+    left: -50px;
+    transition-duration: .5s;
+    position: absolute;
+}

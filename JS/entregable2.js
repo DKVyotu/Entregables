@@ -202,4 +202,4 @@ const agregarPersona = (persona) => {
 
 
 
-menuGeneral();
+menuGeneral();      
