@@ -16,6 +16,8 @@ let imagenProductoNuevo =  document.querySelector("#imagenProductoNuevo");
 
 let contenedorNewProducto = document.querySelector("#contenedorNewProducto");
 
+let filtroCategoria = document.querySelector("#filtroCategoria");
+
 
 
 export default {
@@ -31,4 +33,5 @@ export default {
     envioProductoNuevo,
     imagenProductoNuevo,
     contenedorNewProducto,
+    filtroCategoria,
 }

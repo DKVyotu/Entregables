@@ -71,10 +71,10 @@
                     <input class="form-control mb-2" type="text" id="pesoProductoNuevo" placeholder="Ingresa el Peso">
 
                     <select class="form-select mb-2" id="categoriaProductoNuevo">
-                        <option value="Sin Categoria" selected>Categorias</option>
-                        <option value="Categoria 1">Categoria 1</option>
-                        <option value="Categoria 2">Categoria 2</option>
-                        <option value="Categoria 3">Categoria 3</option>
+                        <option value="sinCategoria" selected>Categorias</option>
+                        <option value="categoria1">Categoria 1</option>
+                        <option value="categoria2">Categoria 2</option>
+                        <option value="categoria3">Categoria 3</option>
                     </select>
 
                     <select class="form-select mb-2" id="envioProductoNuevo">
@@ -96,6 +96,16 @@
         <!-- Productos agregados -->
         <div>
             <h3 class="text-center">Articulos Agregados</h3>
+            <div class="d-flex">
+                <h4>Categorias:</h4>
+                <select class="form-select mx-2 wid200" id="filtroCategoria">
+                    <option value="todos">Todos</option>
+                    <option value="categoria1">Categoria 1</option>
+                    <option value="categoria2">Categoria 2</option>
+                    <option value="categoria3">Categoria 3</option>
+                    <option value="sinCategoria">Sin Categoria</option>
+                </select>
+            </div>
             <div class="d-flex flex-wrap justify-content-center" id="contenedorNewProducto">
         
 
