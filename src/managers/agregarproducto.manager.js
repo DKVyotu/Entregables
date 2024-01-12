@@ -36,8 +36,6 @@ const mostrarProductos = (productosGuardados) => {
     // Borra todos los elementos existentes en el contenedor
     htmlElements.contenedorNewProducto.innerHTML = "";
 
-    console.log(productosGuardados);
-
     productosGuardados.forEach(producto => {
         let card = document.createElement("div");
         card.className = "card d-flex justify-content-between";

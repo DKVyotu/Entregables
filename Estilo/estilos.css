@@ -88,6 +88,15 @@ header {
     padding: 16px;
     margin: 8px;
 }
+.temporal {
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+    height: 300px;
+    padding: 16px;
+    margin: 8px;
+}
 
 .icon24 {
     font-size: 24px;
