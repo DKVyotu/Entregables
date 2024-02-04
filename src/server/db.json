@@ -50,7 +50,7 @@
       "nombre": "producto imagen",
       "descripcion": "",
       "precio": 50,
-      "stock": 0,
+      "stock": 10,
       "categoria": "categoria1",
       "envio": "No",
       "imagenes": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
@@ -96,12 +96,22 @@
       "imagenes": ""
     },
     {
-      "id": "6034beb1-615c-4263-806c-c909bd8983f0",
-      "nombre": "123123",
+      "id": "b8f753e4-1ba7-4393-8ea4-ba18dd1008ff",
+      "nombre": "1231231",
       "descripcion": "",
       "precio": 123123,
-      "stock": 123123,
+      "stock": 122913,
       "categoria": "sinCategoria",
+      "envio": "No",
+      "imagenes": ""
+    },
+    {
+      "id": "6754e8d7-e311-4ad6-adfd-f4865cf2ea3d",
+      "nombre": "Producto Test",
+      "descripcion": "nose ",
+      "precio": 50,
+      "stock": 126,
+      "categoria": "categoria2",
       "envio": "No",
       "imagenes": ""
     }

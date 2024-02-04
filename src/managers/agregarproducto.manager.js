@@ -11,6 +11,10 @@ import productosApi from "../api/productos.api.js";
 // importamos Sweetalert
 import Swal from "sweetalert2";
 
+// importamos Toastify
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css"
+
 
 const agregarProductoNuevo = async () => {
     // Creo una funcion que llama al constructor y asigna los valores de HtmlElements 
@@ -154,6 +158,14 @@ const eliminar10Stock = async (id) => {
 
     if (producto.stock > 9) {
         producto.stock = producto.stock - 10;
+
+        Toastify({
+            text: "Se quito 10 de Stock",
+            position: 'right',
+            gravity: 'bottom',
+            backgroundColor: 'red',
+        }).showToast();
+        
     } else {
         Swal.fire({
             title: 'Stock no puede ser menor que 0!',
@@ -178,6 +190,14 @@ const agregar10Stock = async (id) => {
     producto.stock = producto.stock + 10;
 
     await productosApi.actualizarProducto(id, producto);
+
+    Toastify({
+        text: 'Se agrego 10 de Stock',
+        position: "right",
+        gravity: "top",
+        backgroundColor: 'green',
+    }).showToast();
+
 
     mostrarProductos();
 
