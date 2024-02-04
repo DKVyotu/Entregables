@@ -5,13 +5,21 @@ import { Producto } from "../models/nuevoProducto.model.js"
 // Importo todos los elementos de HtmlElemnts
 import htmlElements from "../elements/html.elements.js";
 
-// Verifica si hay algun producto guardado en LocalStorage y si lo hay lo incluye dentro de los productos guardados
-let productosGuardados = JSON.parse(localStorage.getItem("ProductosGuardadoLocal")) || [];
+// Importo la funcion de mostrar productos desde la db
+import productosApi from "../api/productos.api.js";
 
-// Creo una funcion que llama al constructor y asigna los valores de HtmlElements 
-// y luego de asignarlos los agrega a la base de datos  
-// Luego hace un print en consola de todos los productos que hay en la base de datos
-const agregarProductoNuevo = () => {
+// Verifica si hay algun producto guardado en LocalStorage y si lo hay lo incluye dentro de los productos guardados
+/* let productosGuardados = JSON.parse(localStorage.getItem("ProductosGuardadoLocal")) || []; */
+
+// Llamada a la db 
+/* let productosGuardados = productosApi.obtenerProductos(); */
+
+
+const agregarProductoNuevo = async () => {
+    // Creo una funcion que llama al constructor y asigna los valores de HtmlElements 
+    // y luego de asignarlos los agrega a la base de datos  
+    // Luego hace un print en consola de todos los productos que hay en la base de datos
+
     let productoNuevo = new Producto(
         htmlElements.nombreProductoNuevo.value,
         htmlElements.descripcionProductoNuevo.value,
@@ -24,34 +32,34 @@ const agregarProductoNuevo = () => {
         htmlElements.envioProductoNuevo.value,
         htmlElements.imagenProductoNuevo.value);
 
-    productosGuardados.push(productoNuevo);
-
-    localStorage.setItem("ProductosGuardadoLocal", JSON.stringify(productosGuardados));
+    await productosApi.agregarProducto(productoNuevo);
 
 
-    mostrarProductos(productosGuardados);
+    mostrarProductos();
 }
 
-const mostrarProductos = (productosGuardados) => {
+const mostrarProductos = async () => {
     // Borra todos los elementos existentes en el contenedor
     htmlElements.contenedorNewProducto.innerHTML = "";
+
+    let productosGuardados = await productosApi.obtenerProductos();
+
 
     productosGuardados.forEach(producto => {
         let card = document.createElement("div");
         card.className = "card d-flex justify-content-between";
         card.innerHTML = `
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1280px-Placeholder_view_vector.svg.png" class="imgZoom imgcard pb-3 align-self-center" alt="...">
+        <img src=${producto.imagenes} class="imgZoom imgcard pb-3 align-self-center" alt="...">
         <div class="d-flex justify-content-between tx-12 tx-mediun">
             <div>Precio: ${producto.precio}</div>
             <div>Categoria: <strong>${producto.categoria}</strong></div>
         </div>
         <div class="d-flex justify-content-between tx-12 tx-mediun tx-plomo">
             <div>Stock: ${producto.stock}</div>
-            <div>SKU: ${producto.sku}</div>
+            <div>SKU: ${producto.id}</div>
         </div>
         <div class="pb-3">
             <p class="m-0 py-2 tx-18 tx-semibold lh-sm">${producto.nombre}</p>
-            <p class="p-0 m-0 tx-mediun tx-12 lh-sm">${producto.descripcion}</p>
         </div>
         `
         // Creamos y estilamos el Contenedor de botones 1
@@ -63,14 +71,14 @@ const mostrarProductos = (productosGuardados) => {
         botonEditar.innerText = "Editar";
         botonEditar.className = "btn btn-warning wid100 fw-medium";
         // Agregamos Funcionalidad 
-        botonEditar.onclick = () => editarProducto(producto.sku);
+        botonEditar.onclick = () => editarProducto(producto.id);
 
         // Creamos y estilamos el boton de Eliminar
         let botonEliminar = document.createElement("button");
         botonEliminar.innerText = "Eliminar";
         botonEliminar.className = "btn btn-danger wid100 fw-medium";
         //Agregamos Funcionalidad
-        botonEliminar.onclick = () => eliminarProducto(producto.sku);
+        botonEliminar.onclick = () => eliminarProducto(producto.id);
 
         // Creamos y estilamos el Contenedor de botones2
         let contenedorBotones2 = document.createElement("div");
@@ -81,14 +89,14 @@ const mostrarProductos = (productosGuardados) => {
         botonSinStock.innerText = "Stock -10";
         botonSinStock.className = "btn btn-secondary wid100 fw-medium";
         // Agregamos funcionalidad
-        botonSinStock.onclick = () => eliminar10Stock(producto.sku);
+        botonSinStock.onclick = () => eliminar10Stock(producto.id);
 
         // Creamos boton de agregar 10 de stock
         let boton10Stock = document.createElement("button");
         boton10Stock.innerText = "Stock +10";
         boton10Stock.className = "btn btn-success wid100 fw-medium"
         // Agregamos funcionalidad
-        boton10Stock.onclick = () => agregar10Stock(producto.sku);
+        boton10Stock.onclick = () => agregar10Stock(producto.id);
 
         // Agregamos los botones al contenedor2
         contenedorBotones2.append(botonSinStock, boton10Stock);
@@ -106,60 +114,44 @@ const mostrarProductos = (productosGuardados) => {
 
 }
 
-const eliminarProducto = (skuEliminado) => {
-    // Creamos un nuevo Array con todos los productos sin el selecionado
-    productosGuardados = productosGuardados.filter(producto => producto.sku !== skuEliminado);
+const eliminarProducto = async (id) => {
 
-    // Guardamos la nueva lista 
-    localStorage.setItem("ProductosGuardadoLocal", JSON.stringify(productosGuardados));
+    await productosApi.eliminarProductoId(id);
 
-    // Mostramos la nueva lista
-    mostrarProductos(productosGuardados);
+    mostrarProductos();
 }
 
-const editarProducto = (skuEditado) => {
+const eliminar10Stock = async (id) => {
 
-    // Busca el SKU del producto a editar
-    let i = productosGuardados.findIndex(producto => producto.sku === skuEditado)
+    let producto = await productosApi.obtenerProductoId(id);
 
-    // Imprime la posicion del sku que buscabamos
-    console.log(productosGuardados[i]);
-
-}
-
-const eliminar10Stock = (sku) => {
-    
-    // Buscamos el producto por su SKU
-    let productoSinStock = productosGuardados.findIndex(producto => producto.sku === sku)
-    
-    // Asiganmos el nuevo Stock al producto encontrado
-    if (productosGuardados[productoSinStock].stock > 9) {
-        
-        productosGuardados[productoSinStock].stock = productosGuardados[productoSinStock].stock - 10;
+    if (producto.stock > 9) {
+        producto.stock = producto.stock - 10;
     } else {
         alert("Al Stock actual no se le puede restar 10")
-        
     }
 
-    // Guardamos la nueva lista 
-    localStorage.setItem("ProductosGuardadoLocal", JSON.stringify(productosGuardados));
+    await productosApi.actualizarProducto(id, producto)
 
-    mostrarProductos(productosGuardados);
+    mostrarProductos();
 
 }
 
-const agregar10Stock = (sku) => {
-    
-    // Buscamos el producto por su SKU
-    let producto10 = productosGuardados.findIndex(producto => producto.sku === sku)
-    
-    // Asiganmos el nuevo Stock al producto encontrado
-    productosGuardados[producto10].stock = productosGuardados[producto10].stock + 10;
+const agregar10Stock = async (id) => {
 
-    // Guardamos la nueva lista 
-    localStorage.setItem("ProductosGuardadoLocal", JSON.stringify(productosGuardados));
+    let producto = await productosApi.obtenerProductoId(id);
 
-    mostrarProductos(productosGuardados);
+    producto.stock = producto.stock + 10;
+
+    await productosApi.actualizarProducto(id, producto);
+
+    mostrarProductos();
+
+}
+
+const editarProducto = (id) => {
+
+    // En desarollo
 
 }
 
@@ -194,7 +186,6 @@ const filtrarProducto = (categoria) => {
 
 //Exportando unas funciones especificas
 export default {
-    productosGuardados,
     agregarProductoNuevo,
     mostrarProductos,
     eliminarProducto,

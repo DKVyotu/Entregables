@@ -1,0 +1,98 @@
+{
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Fjallraven - Foldsack No. 1 Backpack",
+      "precio": 109,
+      "descripcion": "Your perfect pack for everyday use and walks in ",
+      "categoria": "men's clothing",
+      "imagenes": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "stock": 100
+    },
+    {
+      "id": "2",
+      "nombre": "Mens Casual Premium Slim Fit T-Shirts ",
+      "precio": 22.3,
+      "descripcion": "Slim-fitting style, contrast raglan long sleeveat.",
+      "categoria": "men's clothing",
+      "imagenes": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "stock": 100
+    },
+    {
+      "id": "3",
+      "nombre": "Mens Cotton Jacket",
+      "precio": 55.99,
+      "descripcion": "great outerwear jackets for Spring/Autumn/Winter",
+      "categoria": "men's clothing",
+      "imagenes": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "stock": 100
+    },
+    {
+      "id": "4",
+      "nombre": "Mens Casual Slim Fit",
+      "precio": 15.99,
+      "descripcion": "The color could be slightly different between",
+      "categoria": "men's clothing",
+      "imagenes": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "stock": 100
+    },
+    {
+      "id": "5",
+      "nombre": "John Hardy Women's Legends Naga",
+      "precio": 695,
+      "descripcion": "From our Legends Collection, the Naga was.",
+      "categoria": "jewelery",
+      "imagenes": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+      "stock": 100
+    },
+    {
+      "id": "6e60",
+      "nombre": "producto sion imagen",
+      "descripcion": "",
+      "precio": "",
+      "stock": 100,
+      "marca": "",
+      "garantia": "",
+      "peso": "",
+      "categoria": "sinCategoria",
+      "envio": "No",
+      "imagenes": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+      "id": "dad3a966-1b11-47a1-a87a-86e96d966770",
+      "nombre": "1111",
+      "descripcion": "",
+      "precio": "",
+      "stock": 100,
+      "marca": "",
+      "garantia": "",
+      "peso": "",
+      "categoria": "sinCategoria",
+      "envio": "No",
+      "imagenes": ""
+    },
+    {
+      "id": "820de289-82c5-44a7-afee-b873cef6fe60",
+      "nombre": "123123123123",
+      "descripcion": "",
+      "precio": "",
+      "stock": 55,
+      "marca": "",
+      "garantia": "",
+      "peso": "",
+      "categoria": "sinCategoria",
+      "envio": "No",
+      "imagenes": ""
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Usuario1"
+    },
+    {
+      "id": "2",
+      "nombre": "Usuario2"
+    }
+  ]
+}

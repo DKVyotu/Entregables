@@ -1,6 +1,4 @@
-
-console.log("Ejecutando desde el modulo appAgregarProductos");
-
+    
 // Importa objetos Html
 import htmlElements from "./elements/html.elements.js";
 
@@ -17,7 +15,7 @@ htmlElements.formProductoNuevo.onsubmit = (event) => {
     htmlElements.formProductoNuevo.reset();
 }
 
-funcionesManager.mostrarProductos(funcionesManager.productosGuardados);
+funcionesManager.mostrarProductos();
 
 funcionesManager.eliminarProducto();
 
@@ -27,3 +25,4 @@ htmlElements.filtroCategoria.onchange = () => {
     // Recibe el valor que tiene el select y llama a la funcion de filtro
     funcionesManager.filtrarProducto(htmlElements.filtroCategoria.value);
 }
+
