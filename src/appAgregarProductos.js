@@ -17,9 +17,6 @@ htmlElements.formProductoNuevo.onsubmit = (event) => {
 
 funcionesManager.mostrarProductos();
 
-funcionesManager.eliminarProducto();
-
-funcionesManager.editarProducto();
 
 htmlElements.filtroCategoria.onchange = () => {
     // Recibe el valor que tiene el select y llama a la funcion de filtro

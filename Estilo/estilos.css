@@ -25,6 +25,9 @@ header {
     color: rgb(170, 170, 170);
 }
 
+.tx-9 {
+    font-size: 9px;
+}
 .tx-12 {
     font-size: 12px;
 }
@@ -45,6 +48,9 @@ header {
 }
 .tx-ultrabold {
     font-weight: 800;
+}
+.wid100p {
+    width: 100%;
 }
 .wid250 {
     width: 700px;
@@ -84,7 +90,7 @@ header {
     border-radius: 8px;
     border: none;
     width: 244px;
-    height: 406px;
+    height: 450px;
     padding: 16px;
     margin: 8px;
 }

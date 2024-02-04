@@ -8,11 +8,8 @@ import htmlElements from "../elements/html.elements.js";
 // Importo la funcion de mostrar productos desde la db
 import productosApi from "../api/productos.api.js";
 
-// Verifica si hay algun producto guardado en LocalStorage y si lo hay lo incluye dentro de los productos guardados
-/* let productosGuardados = JSON.parse(localStorage.getItem("ProductosGuardadoLocal")) || []; */
-
-// Llamada a la db 
-/* let productosGuardados = productosApi.obtenerProductos(); */
+// importamos Sweetalert
+import Swal from "sweetalert2";
 
 
 const agregarProductoNuevo = async () => {
@@ -25,15 +22,21 @@ const agregarProductoNuevo = async () => {
         htmlElements.descripcionProductoNuevo.value,
         htmlElements.precioProductoNuevo.value,
         htmlElements.stockProductoNuevo.value,
-        htmlElements.marcaProductoNuevo.value,
-        htmlElements.garantiaProductoNuevo.value,
-        htmlElements.pesoProductoNuevo.value,
         htmlElements.categoriaProductoNuevo.value,
         htmlElements.envioProductoNuevo.value,
         htmlElements.imagenProductoNuevo.value);
 
     await productosApi.agregarProducto(productoNuevo);
-
+    
+    Swal.fire({
+        title: "Exito",
+        html: `Se agrego <b>${productoNuevo.nombre}</b> correctamente!`,
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: "green",
+        timer: 3000,
+        timerProgressBar: true
+      })
 
     mostrarProductos();
 }
@@ -50,39 +53,30 @@ const mostrarProductos = async () => {
         card.className = "card d-flex justify-content-between";
         card.innerHTML = `
         <img src=${producto.imagenes} class="imgZoom imgcard pb-3 align-self-center" alt="...">
+        <div class="tx-9 tx-mediun tx-plomo">SKU: ${producto.id}</div>
         <div class="d-flex justify-content-between tx-12 tx-mediun">
-            <div>Precio: ${producto.precio}</div>
+            <div>Precio: $${producto.precio}</div>
             <div>Categoria: <strong>${producto.categoria}</strong></div>
         </div>
-        <div class="d-flex justify-content-between tx-12 tx-mediun tx-plomo">
-            <div>Stock: ${producto.stock}</div>
-            <div>SKU: ${producto.id}</div>
-        </div>
-        <div class="pb-3">
+        <div class="d-flex justify-content-center tx-16 tx-mediun tx-plomo">Stock: ${producto.stock}</div>
+        <div>
             <p class="m-0 py-2 tx-18 tx-semibold lh-sm">${producto.nombre}</p>
         </div>
         `
         // Creamos y estilamos el Contenedor de botones 1
         let contenedorBotones = document.createElement("div");
-        contenedorBotones.className = "d-flex justify-content-between";
-
-        // Creamos y estilamos el boton de Editar
-        let botonEditar = document.createElement("button");
-        botonEditar.innerText = "Editar";
-        botonEditar.className = "btn btn-warning wid100 fw-medium";
-        // Agregamos Funcionalidad 
-        botonEditar.onclick = () => editarProducto(producto.id);
+        contenedorBotones.className = "d-flex justify-content-center";
 
         // Creamos y estilamos el boton de Eliminar
         let botonEliminar = document.createElement("button");
         botonEliminar.innerText = "Eliminar";
-        botonEliminar.className = "btn btn-danger wid100 fw-medium";
+        botonEliminar.className = "btn btn-danger wid100p fw-medium";
         //Agregamos Funcionalidad
         botonEliminar.onclick = () => eliminarProducto(producto.id);
 
         // Creamos y estilamos el Contenedor de botones2
         let contenedorBotones2 = document.createElement("div");
-        contenedorBotones2.className = "d-flex justify-content-between";
+        contenedorBotones2.className = "d-flex justify-content-between pb-1";
 
         // Creamos boton de quitar 10 de stock
         let botonSinStock = document.createElement("button");
@@ -102,10 +96,15 @@ const mostrarProductos = async () => {
         contenedorBotones2.append(botonSinStock, boton10Stock);
 
         // Agregamos los botones al Contenedor
-        contenedorBotones.append(botonEditar, botonEliminar);
+        contenedorBotones.append(botonEliminar);
+
+        // Contenedor de contenedores de botones
+        let contenedorMaster = document.createElement("div");
+        contenedorMaster.append(contenedorBotones2, contenedorBotones)
+
 
         // Agregamos el contenedor a la Card
-        card.append(contenedorBotones, contenedorBotones2);
+        card.append(contenedorMaster);
 
         // Agregamos la Card al contenedor de Cards
         htmlElements.contenedorNewProducto.appendChild(card);
@@ -114,11 +113,39 @@ const mostrarProductos = async () => {
 
 }
 
-const eliminarProducto = async (id) => {
+const eliminarProducto = (id) => {
 
-    await productosApi.eliminarProductoId(id);
+    Swal.fire({
+        title: "Advertencia",
+        html: '¿Estas seguro que quieres eliminar el Producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "green",
+        cancelButtonText: "Cancelar",
+        cancelButtonColor: "Red",
+        timer: 3000,
+        timerProgressBar: true,
+      }).then(async (resp) => {
+        if (resp.isConfirmed) {
+            await productosApi.eliminarProductoId(id); 
 
-    mostrarProductos();
+            Swal.fire({
+                title: "Producto eliminado",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+
+            mostrarProductos();
+        } else {
+            Swal.fire({
+                title: "Producto no eliminado",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    });
+
 }
 
 const eliminar10Stock = async (id) => {
@@ -128,7 +155,14 @@ const eliminar10Stock = async (id) => {
     if (producto.stock > 9) {
         producto.stock = producto.stock - 10;
     } else {
-        alert("Al Stock actual no se le puede restar 10")
+        Swal.fire({
+            title: 'Stock no puede ser menor que 0!',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: "green",
+            timer: 2000,
+            timerProgressBar: true
+          })
     }
 
     await productosApi.actualizarProducto(id, producto)
@@ -155,7 +189,9 @@ const editarProducto = (id) => {
 
 }
 
-const filtrarProducto = (categoria) => {
+const filtrarProducto = async (categoria) => {
+
+    let productosGuardados = await productosApi.obtenerProductos();
 
     if (categoria === "categoria1") {
 
@@ -178,7 +214,7 @@ const filtrarProducto = (categoria) => {
         mostrarProductos(productosSinCategoria);
 
     } else {
-        mostrarProductos(productosGuardados);
+        mostrarProductos();
     }
 
 }

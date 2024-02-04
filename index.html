@@ -2,190 +2,139 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="./media/logoNav.png" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="../media/logoNav.png" type="image/x-icon">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- Iconos -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
-  <!-- Google Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Esilos -->
-  <link rel="stylesheet" href="./Estilo/estilos.css">
+    <!-- Esilos -->
+    <link rel="stylesheet" href="../Estilo/estilos.css">
 
-  <title>Shopify</title>
+    <title>Agregar producto</title>
 </head>
 
 <header>
-  <nav class="d-flex justify-content-evenly align-items-center p-3">
-    <a class="d-flex align-items-end" href="./pages/newProduct.html">
-      <img class="imagenNav" src="./media/logoNav.png" alt="Imagen de Logo">
-      <h3 class="pe-4 tx-blanco">ShopStar</h3>
-    </a>
-    <input class="wid250 form-control" type="text" placeholder="Buscar">
-    <div class="d-flex align-items-center ps-4">
-      <button class="btn btn-light d-flex align-items-center">
-        <i class="bi bi-cart3 pe-1"></i>
-        <span class="badge text-bg-secondary">0</span>
-      </button>
-      <div class="p-2"></div>
-      <button class="btn btn-primary">Login</button>
-    </div>
-  </nav>
+    <nav class="d-flex justify-content-evenly align-items-center p-3">
+        <a class="d-flex align-items-end" href="../index.html">
+            <img class="imagenNav" src="../media/logoNav.png" alt="Imagen de Logo">
+            <h3 class="pe-4 tx-blanco">ShopStar</h3>
+        </a>
+        <input class="wid250 form-control" type="text" placeholder="Buscar">
+        <div class="d-flex align-items-center ps-4">            
+            <div class="p-2"></div>
+            <button class="btn btn-primary">Login</button>
+        </div>
+    </nav>
 </header>
 
 <body>
+    <div class="d-flex justify-content-center flex-column p-4"> 
+        <!-- Agregar productos -->
+        <div class="d-flex justify-content-center flex-column p-5">
 
-  <div class="d-flex justify-content-center p-4 row">
+            <h2 class="text-center">Ingresa Productos Nuevos</h2>
+            <hr>
+            <form class="d-flex justify-content-center" id="formProductoNuevo"  >
 
-    <!-- Filtros -->
-    <div class="p-2 col-2">
-      <div class="d-flex justify-content-center">
-        <a class="d-flex flex-column temporal" href="./pages/newProduct.html">
-          <img src="./media/Subir.png" class="imgZoom imgcard pb-3 align-self-center" alt="...">
-          <div class="pb-3">
-            <p class="m-0 py-2 tx-18 tx-semibold lh-sm text-center">Click para subir</p>
-            <p class="p-0 m-0 tx-mediun tx-12 lh-sm text-center">Productos Nuevos</p>
-          </div>        
-        </a>
-      </div>
-      <!-- Filtros -->
-      <h3 class="text-center">Filtros</h3>
-      <hr>
-      <div>
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label">Solo en Stock</label>
-      </div>
-      <div>
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label">Envio Gratis </label>
-      </div>
-      <hr>
-      <div class="">
-        <h5 class="form-label">Precio</h5>
-        <div class="d-flex">
-          <div class="align-self-center">
-            <p class="form-label mb-0">Min</p>
-            <input class="form-control" placeholder="0" type="number">
-          </div>
-          <div class="align-self-center px-3">
-            <i class="bi bi-dash-lg"></i>
-          </div>
-          <div class="align-self-center">
-            <p class="form-label text-end mb-0">Max</p>
-            <input class="form-control" placeholder="00000" type="number">
-          </div>
+                <div class="d-flex flex-column mx-2 col-2">
+                    <div class="d-flex justify-content-center mb-3">
+                        <img class="" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg" width="250px" alt="Imagenen generica">
+                    </div>
+                    <input class="none" type="file" id="imagenProductoNuevo">
+                    <label for="imagenProductoNuevo" class="btn btn-outline-primary d-flex align-items-center justify-content-center"> 
+                        <i class="bi bi-cloud-arrow-up icon24 me-2"></i>
+                        Subir Imagen 
+                    </label>
+                </div>
+
+                <div class="d-flex flex-column mx-2 col-3">
+                    <input class="form-control mb-2" type="text" id="nombreProductoNuevo" placeholder="Ingresa el nombre del articulo" required>
+                    <textarea class="form-control mb-2" id="descripcionProductoNuevo" placeholder="Ingresa la descripcion"></textarea>
+                    <input class="form-control mb-2" type="number" id="precioProductoNuevo" placeholder="Ingresa el Precio" required>
+                    <input class="form-control mb-2" type="number" id="stockProductoNuevo" placeholder="Ingresa el Stock" required>
+
+                    <select class="form-select mb-2" id="categoriaProductoNuevo">
+                        <option value="sinCategoria" selected>Categorias</option>
+                        <option value="categoria1">Categoria 1</option>
+                        <option value="categoria2">Categoria 2</option>
+                        <option value="categoria3">Categoria 3</option>
+                    </select>
+
+                    <select class="form-select mb-2" id="envioProductoNuevo">
+                        <option value="No" selected>Sin envio Gratis</option>
+                        <option value="Si">Con Envio Gratis</option>
+                    </select>
+
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Agregar Articulo</button>
+                    <hr>
+
+                </div>
+            </form>
+
         </div>
-      </div>
-      <hr>
-      <div>
-        <h5>Ordenar</h5>
-        <select class="form-select">
-          <option selected></option>
-          <option value="0">Promociones</option>
-          <option value="1">Precio mayor</option>
-          <option value="2">Precio menor</option>
-          <option value="3">A - Z</option>
-          <option value="4">Z - A</option>
-        </select>
-      </div>
-      <hr>
-      <div class="form-floating">
-        <select class="form-select" id="floatingSelect">
-          <option selected>Selecionar</option>
-          <option>Categoria 1</option>
-          <option>Categoria 2</option>
-          <option>Categoria 3</option>
-        </select>
-        <label for="floatingSelect">Categoria</label>
-      </div>
-      <hr>
-     
+
+        <hr>
+
+        <!-- Productos agregados -->
+        <div>
+            <h3 class="text-center">Productos Agregados</h3>
+            <div class="d-flex">
+                <h4>Categorias:</h4>
+                <select class="form-select mx-2 wid200" id="filtroCategoria">
+                    <option value="todos">Todos</option>
+                    <option value="categoria1">Categoria 1</option>
+                    <option value="categoria2">Categoria 2</option>
+                    <option value="categoria3">Categoria 3</option>
+                    <option value="sinCategoria">Sin Categoria</option>
+                </select>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center" id="contenedorNewProducto">
+        
+
+            </div>
+        </div>
+
+        <hr>
     </div>
-
-    <!-- Cards -->
-    <div class="d-flex justify-content-center flex-wrap col-8" id="cardIndex">
-
-      <a class="card d-flex justify-content-between " href="./pages/newProduct.html">
-        <img src="./media/Subir.png" class="imgZoom imgcard pb-3 align-self-center" alt="...">
-        <div class="d-flex justify-content-between tx-12 tx-mediun tx-plomo">
-          <div>Stock: 99</div>
-          <div>SKU: 1234567890</div>
-        </div>
-        <div class="pb-3">
-          <p class="m-0 py-2 tx-18 tx-semibold lh-sm text-center">Click para subir</p>
-          <p class="p-0 m-0 tx-mediun tx-12 lh-sm text-center">Productos Nuevos</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <div>
-            <div class="tx-12 tx-bold">Precio</div>
-            <div class="tx-16 tx-ultrabold">$ 1099.99</div>
-          </div>
-          <button class=" btn btn-primary CartBtn wid100 ">
-            <i class="bi bi-cart3 IconContainer"></i>
-            <strong>Añadir</strong>
-          </button>
-        </div>
-      </a>
-
-      <a class="card d-flex justify-content-between " href="./pages/product.html">
-        <img src="./media/logoNav.png" class="imgZoom imgcard pb-3 align-self-center" alt="...">
-        <div class="d-flex justify-content-between tx-12 tx-mediun tx-plomo">
-          <div>Stock: 59</div>
-          <div>SKU: 156132456175</div>
-        </div>
-        <div class="pb-3">
-          <p class="m-0 py-2 tx-18 tx-semibold lh-sm">Articulo 1 nombre generico para que entre</p>
-          <p class="p-0 m-0 tx-mediun tx-12 lh-sm">Descipcion del articulo aca van mas detalles del articulo</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <div>
-            <div class="tx-12 tx-bold">Precio</div>
-            <div class="tx-16 tx-ultrabold">S/1099.99</div>
-          </div>
-          <button class=" btn btn-primary CartBtn wid100 ">
-            <i class="bi bi-cart3 IconContainer"></i>
-            <strong>Añadir</strong>
-          </button>
-        </div>
-      </a>
-
-
-    </div>
-
-  </div>
-  
 </body>
 
 <footer class="d-flex flex-column pt-5 tx-blanco">
-  <div class="d-flex justify-content-evenly align-items-center">
-    <img class="imagenFoot" src="./media/logoNav.png" alt="logo de empreza">
-    <div class="d-flex">
-      <ul class="text-center ">
-        <li>Terminos y condiciones</li>
-        <li>Faq</li>
-      </ul>
-      <ul class="text-center">
-        <li>Garantia</li>
-        <li>Contacto</li>
-      </ul>
+    <div class="d-flex justify-content-evenly align-items-center">
+        <img class="imagenFoot" src="../media/logoNav.png" alt="logo de empreza">
+        <div class="d-flex">
+            <ul class="text-center ">
+                <li>Terminos y condiciones</li>
+                <li>Faq</li>
+            </ul>
+            <ul class="text-center">
+                <li>Garantia</li>
+                <li>Contacto</li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <i class="bi bi-book-half icon24"></i>
+            <p>Libro de Reclamaciones</p>
+        </div>
     </div>
-    <div class="text-center">
-      <i class="bi bi-book-half icon24"></i>
-      <p>Libro de Reclamaciones</p>
-    </div>
-  </div>
-  <div class="text-center"><strong>Todos los Derechos reservados</strong></div>
+    <div class="text-center"><strong>Todos los Derechos reservados</strong></div>
 </footer>
 
-<script type="module" src="./src/main.js"></script>
+<script type="module" src="../src/appAgregarProductos.js"></script>
+
+<!-- Dividimos los Js en applicaciones para que no cree conflictos con ID de otros html donde no estan creados -->
+<!-- <script type="module" src="../main.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </html>
